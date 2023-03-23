@@ -426,9 +426,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab3b0cb53b569a4fa4091e8f9bee7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 25
-  strafeSpeed: 7.5
-  hoverSpeed: 5
+  forwardSpeed: 20.71
+  strafeSpeed: 6
+  hoverSpeed: 4
+  lookRateSpeed: 90
 --- !u!136 &1228204394
 CapsuleCollider:
   m_ObjectHideFlags: 0
