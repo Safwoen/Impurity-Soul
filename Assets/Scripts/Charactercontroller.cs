@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Charactercontroller : MonoBehaviour
 {
+   
+    
     public float forwardSpeed =25f, strafeSpeed =7.5f, hoverSpeed =5f;
     private float  activeForwardSpeed , activeStrafeSpeed , activeHoverSpeed ;
     private float forwardAcceleration = 2.5f, strafeAcceleration = 2f, hoverAcceleration = 2f;
@@ -15,11 +17,13 @@ public class Charactercontroller : MonoBehaviour
     {
        screenCentre.x = Screen.width * .5f;
         screenCentre.y = Screen.height * .5f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+     
        
         mouseDistance.x = Input.GetAxis("Mouse X");
         mouseDistance.y = Input.GetAxis("Mouse Y");
@@ -36,4 +40,5 @@ public class Charactercontroller : MonoBehaviour
         transform.position +=(transform.up * activeHoverSpeed * Time.deltaTime ) ;
       
     }
+   
 }
