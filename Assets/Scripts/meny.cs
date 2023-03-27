@@ -20,5 +20,10 @@ public class meny : MonoBehaviour
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
+
+    public void menu()
+     {
+       SceneManager.LoadScene(0);
+    }
 }
 
