@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform player;
+    Vector3  difference;
+    Rigidbody rb;
+    public float moveSpeed = 5f;
+    bool canShoot;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        difference = player.position - this.transform.position;
+        if(difference.magnitude < 20)
+        {
+            rb.velocity = difference.normalized * moveSpeed;
+            canShoot = true;
+        }
+        if(canShoot)
+        {
+            //shooting code here
+        }
     }
 }
  //2 variable
