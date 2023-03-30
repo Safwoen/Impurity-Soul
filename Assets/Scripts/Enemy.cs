@@ -8,7 +8,10 @@ public class Enemy : MonoBehaviour
     Vector3  difference;
     Rigidbody rb;
     public float moveSpeed = 5f;
-    bool canShoot;
+     bool canShoot = true;
+    public Transform bulletSpawnPoint;
+    public float bulletSpeed = 10;
+    public GameObject bulletPrefab ;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +27,11 @@ public class Enemy : MonoBehaviour
             rb.velocity = difference.normalized * moveSpeed;
             canShoot = true;
         }
-        if(canShoot)
-        {
-            //shooting code here
-        }
+       if(Input.GetMouseButton(0))
+       {
+           var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position,bulletSpawnPoint.rotation);
+           bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+       }
     }
 }
  //2 variable
