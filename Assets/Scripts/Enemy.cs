@@ -22,11 +22,15 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         difference = player.position - this.transform.position;
-        if(difference.magnitude < 20)
+
+        float dist = difference.sqrMagnitude;
+
+        if((dist < 200) && (dist > 20))
         {
             rb.velocity = difference.normalized * moveSpeed;
             canShoot = true;
         }
+
        if(Input.GetMouseButton(0))
        {
            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position,bulletSpawnPoint.rotation);

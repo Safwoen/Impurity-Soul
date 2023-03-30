@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private Vector2 lookInput, screenCentre, mouseDistance;
-    public float lookRateSpeed = 90f;
-    
+   
+    float totalRotation = 0f; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseDistance.y = Input.GetAxis("Mouse Y");
-        transform.Rotate(-mouseDistance.y * lookRateSpeed * Time.deltaTime, 0f,0f , Space.Self);
+        totalRotation -= Input.GetAxis("Mouse Y");
+
+        totalRotation = Mathf.Clamp(totalRotation, -33f, 54f);
+
+        Debug.Log(totalRotation);
+
+        transform.rotation = Quaternion.Euler(totalRotation, transform.rotation.eulerAngles.y,transform.rotation.eulerAngles.z);
     }
 }
