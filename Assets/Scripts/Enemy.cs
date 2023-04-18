@@ -10,12 +10,16 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 5f;
      bool canShoot = true;
     public Transform bulletSpawnPoint;
-    public float bulletSpeed = 10;
+    public float fireRate = 10;
     public GameObject bulletPrefab ;
+    public float shootingRange = 10f;
+    private float timeSinceLastFire = 0f;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -30,12 +34,25 @@ public class Enemy : MonoBehaviour
             rb.velocity = difference.normalized * moveSpeed;
             canShoot = true;
         }
+        
+     if (difference.sqrMagnitude <= shootingRange)   
+        {
+            transform.LookAt(player);
+            timeSinceLastFire += Time.deltaTime;
+            if(timeSinceLastFire>= 1/ fireRate)
+            {
+                Shoot();
+                timeSinceLastFire = 0;
+            }
+        }
+  
+    }
 
-       if(Input.GetMouseButton(0))
-       {
-           var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position,bulletSpawnPoint.rotation);
-           bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
-       }
+    void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab,bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = (player.position - bulletSpawnPoint.position).normalized * 10f;
+
     }
 }
  //2 variable

@@ -5,8 +5,10 @@ using UnityEngine;
 public class gun : MonoBehaviour
 {
      public Transform bulletSpawnPoint;
-    public float bulletSpeed = 10;
     public GameObject bulletPrefab ;
+    public float moveSpeed = 5f;
+    public float fireRate = 10;
+    public float shootingRange = 10f;
     
     void Start()
     {
@@ -18,8 +20,8 @@ public class gun : MonoBehaviour
     {
          if(Input.GetMouseButton(0))
        {
-           var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position,bulletSpawnPoint.rotation);
-           bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+           var bullet = Instantiate(bulletPrefab,bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+           bullet.GetComponent<Rigidbody>().velocity=bulletSpawnPoint.forward * fireRate;
        }
     }
 }

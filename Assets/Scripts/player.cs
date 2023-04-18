@@ -4,8 +4,32 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-     public int maxHealth = 100;
+    public int maxHealth = 100;
     public int currentHealth;
+    public int damage = 10;
+     
+
+      private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyBullet"))
+        {
+            TakeDamage(10);
+            Destroy(other.gameObject);
+        }
+    }
+
+    
+
+
+     private void TakeDamage(int damage)
+    {
+        currentHealth-=damage;
+        if (currentHealth<= 0)
+        {
+            Die();
+        }
+    }
+
 
      public Healthbar healthBar;
     void Start()
@@ -14,7 +38,7 @@ public class player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
           if(Input.GetKeyDown (KeyCode.Space))
@@ -23,9 +47,19 @@ public class player : MonoBehaviour
         }
     }
 
-     void TakeDamage (int damage)
+     void TakeDamageByEnemy(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
+
+    
+
+      private void Die()
+    {
+        Debug.Log("Player has died!");
+        
+    }
+
+
 }
