@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 11.180016
+      value: 147.69829
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 11.180016
+      value: 147.69829
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 11.180016
+      value: 147.69829
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c7f2615ef019f34409a3e6f334443f7d, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
       propertyPath: m_Name
-      value: AnimatedToxicBlob
+      value: AnimatedToxicBlob Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
@@ -78,19 +78,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b4de8c8e7007b54a8df4bed28e2deb3, type: 3}
   m_PrefabInstance: {fileID: 657333039886062860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3957137793734261626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422838341147584605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b0f5a2bb59cd843ba00e83c997ff1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 3
 --- !u!54 &8765749567720794564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,3 +94,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3957137793734261626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422838341147584605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0f5a2bb59cd843ba00e83c997ff1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0.48
