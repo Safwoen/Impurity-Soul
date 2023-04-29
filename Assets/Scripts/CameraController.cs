@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
         totalRotation = Mathf.Clamp(totalRotation, -33f, 54f);
 
-        Debug.Log(totalRotation);
+       
 
         transform.rotation = Quaternion.Euler(totalRotation, transform.rotation.eulerAngles.y,transform.rotation.eulerAngles.z);
     }
