@@ -12,12 +12,14 @@ public class Charactercontroller : MonoBehaviour
 
     public float lookRateSpeed = 90f;
     private Vector2 lookInput, screenCentre, mouseDistance;
+
+    Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
     {
        screenCentre.x = Screen.width * .5f;
         screenCentre.y = Screen.height * .5f;
-
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -35,9 +37,17 @@ public class Charactercontroller : MonoBehaviour
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed,strafeAcceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed, hoverAcceleration * Time.deltaTime);
 
-        transform.position +=transform.forward * activeForwardSpeed * Time.deltaTime;
+        Vector3 delta = transform.forward * activeForwardSpeed;
+        delta += transform.right * activeStrafeSpeed;
+        delta += transform.up * activeHoverSpeed;
+
+        delta = new Vector3(delta.x, rigidbody.velocity.y, delta.z);
+
+        /*transform.position +=transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position +=(transform.right * activeStrafeSpeed * Time.deltaTime ) ;
-        transform.position +=(transform.up * activeHoverSpeed * Time.deltaTime ) ;
+        transform.position +=(transform.up * activeHoverSpeed * Time.deltaTime ) ;*/
+
+        rigidbody.velocity = delta;
       
     }
    

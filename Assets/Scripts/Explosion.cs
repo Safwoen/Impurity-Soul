@@ -8,6 +8,11 @@ public class Explosion : MonoBehaviour
     public float explosionRadius = 5f;
     public ParticleSystem explosionParticles;
 
+    private void Start()
+    {
+        explosionParticles.Stop();
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // You can adjust this tag to fit your scenario
@@ -16,6 +21,9 @@ public class Explosion : MonoBehaviour
             explosionParticles.Play();
             ApplyExplosionForce();
             Debug.Log("Explosion triggered!");
+
+            other.GetComponent<player>().TakeDamage(30);
+
 
             // Remove the mine from the scene
             Destroy(gameObject);
