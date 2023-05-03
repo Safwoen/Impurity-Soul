@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public Transform bulletSpawnPoint;
     public float fireRate = 10;
     public GameObject bulletPrefab ;
-    public float shootingRange = 10f;
+    public float shootingRange = 20f;
     private float timeSinceLastFire = 0f;
     
     // Start is called before the first frame update

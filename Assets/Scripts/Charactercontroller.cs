@@ -12,14 +12,15 @@ public class Charactercontroller : MonoBehaviour
 
     public float lookRateSpeed = 90f;
     private Vector2 lookInput, screenCentre, mouseDistance;
+    bool inWater;
 
-    Rigidbody rigidbody;
+    Rigidbody rigidBody;
     // Start is called before the first frame update
     void Start()
     {
        screenCentre.x = Screen.width * .5f;
         screenCentre.y = Screen.height * .5f;
-        rigidbody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -41,14 +42,31 @@ public class Charactercontroller : MonoBehaviour
         delta += transform.right * activeStrafeSpeed;
         delta += transform.up * activeHoverSpeed;
 
-        delta = new Vector3(delta.x, rigidbody.velocity.y, delta.z);
+        delta = new Vector3(delta.x, rigidBody.velocity.y, delta.z);
 
         /*transform.position +=transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position +=(transform.right * activeStrafeSpeed * Time.deltaTime ) ;
         transform.position +=(transform.up * activeHoverSpeed * Time.deltaTime ) ;*/
 
-        rigidbody.velocity = delta;
+        rigidBody.velocity = delta;
+
       
     }
-   
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ashdgfj")
+        {
+            inWater = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "asdawsd")
+        {
+            inWater = false;
+        }
+    }
+
 }
