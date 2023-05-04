@@ -55,7 +55,7 @@ public class Charactercontroller : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "ashdgfj")
+        if (other.gameObject.tag == "D rigidbody")
         {
             inWater = true;
         }
@@ -63,7 +63,7 @@ public class Charactercontroller : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "asdawsd")
+        if (other.gameObject.tag == "D rigidbody")
         {
             inWater = false;
         }
