@@ -26,8 +26,7 @@ public class Charactercontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
-       
+
         mouseDistance.x = Input.GetAxis("Mouse X");
         mouseDistance.y = Input.GetAxis("Mouse Y");
 
@@ -42,11 +41,10 @@ public class Charactercontroller : MonoBehaviour
         delta += transform.right * activeStrafeSpeed;
         delta += transform.up * activeHoverSpeed;
 
-        delta = new Vector3(delta.x, rigidBody.velocity.y, delta.z);
-
-        /*transform.position +=transform.forward * activeForwardSpeed * Time.deltaTime;
-        transform.position +=(transform.right * activeStrafeSpeed * Time.deltaTime ) ;
-        transform.position +=(transform.up * activeHoverSpeed * Time.deltaTime ) ;*/
+        if (!inWater)
+        {
+            delta = new Vector3(delta.x, rigidBody.velocity.y, delta.z);
+        }
 
         rigidBody.velocity = delta;
 
@@ -56,7 +54,10 @@ public class Charactercontroller : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "D rigidbody")
+
         {
+            rigidBody.useGravity = false;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
             inWater = true;
         }
     }
@@ -65,6 +66,7 @@ public class Charactercontroller : MonoBehaviour
     {
         if (other.gameObject.tag == "D rigidbody")
         {
+            rigidBody.useGravity = true;
             inWater = false;
         }
     }
