@@ -27,15 +27,18 @@ public class Enemy : MonoBehaviour
     {
         difference = player.position - this.transform.position;
 
-        float dist = difference.sqrMagnitude;
+        float dist = difference.magnitude;
+
 
         if((dist < 200) && (dist > 20))
         {
+            Debug.Log("move and shoot");
+
             rb.velocity = difference.normalized * moveSpeed;
             canShoot = true;
         }
         
-     if (difference.sqrMagnitude <= shootingRange)   
+        if (difference.sqrMagnitude <= shootingRange)   
         {
             transform.LookAt(player);
             timeSinceLastFire += Time.deltaTime;
