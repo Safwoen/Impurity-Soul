@@ -7,12 +7,20 @@ public class player : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public int damage = 10;
+    public GameObject DeathUI;
 
     public Healthbar healthBar;
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+    }
+
+    
+
+     private void ActivateDeathAni()
+    {
+       DeathUI.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +36,12 @@ public class player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth-=damage;
+
+         if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            ActivateDeathAni();
+        }
     }
     
     void Update()
