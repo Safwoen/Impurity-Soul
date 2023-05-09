@@ -16,12 +16,12 @@ public class gun : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-       if(Input.GetMouseButton(0))
-       {
-           var bullet = Instantiate(bulletPrefab,bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-           bullet.GetComponent<Rigidbody>().velocity=bulletSpawnPoint.forward * fireRate;
-       }
-    }
+   // void Update()
+    //{
+       //if(Input.GetMouseButton(0))
+       //{
+          // var bullet = Instantiate(bulletPrefab,bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+          // bullet.GetComponent<Rigidbody>().velocity=bulletSpawnPoint.forward * fireRate;
+       //}
+   // }
 }

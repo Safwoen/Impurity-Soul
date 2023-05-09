@@ -8,6 +8,9 @@ public class player : MonoBehaviour
     public int currentHealth;
     public int damage = 10;
     public GameObject DeathUI;
+
+    public GameObject endScreen;
+    public int garbageCollected;
     
 
     public Healthbar healthBar;
@@ -36,6 +39,13 @@ public class player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+         if (garbageCollected >= 1)
+        {
+            endScreen.SetActive(true);
+        }
+
+
+
         currentHealth-=damage;
 
          if (currentHealth <= 0)
@@ -47,11 +57,7 @@ public class player : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown (KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
-    
+           
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -69,6 +75,8 @@ public class player : MonoBehaviour
     {
         Debug.Log("Player has died!");
     }
+
     
+   
     
 }
