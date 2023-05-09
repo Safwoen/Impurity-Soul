@@ -13,6 +13,7 @@ public class Charactercontroller : MonoBehaviour
     public float lookRateSpeed = 90f;
     private Vector2 lookInput, screenCentre, mouseDistance;
     bool inWater;
+    public int collectablesCollected;
 
     Rigidbody rigidBody;
     // Start is called before the first frame update
@@ -71,4 +72,5 @@ public class Charactercontroller : MonoBehaviour
         }
     }
 
+    
 }
