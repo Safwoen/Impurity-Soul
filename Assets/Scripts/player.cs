@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     public int currentHealth;
     public int damage = 10;
     public GameObject DeathUI;
+    
 
     public Healthbar healthBar;
     void Start()
