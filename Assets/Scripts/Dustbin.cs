@@ -14,7 +14,7 @@ public class Dustbin : MonoBehaviour
     {
         if (other.CompareTag("canPickUp"))
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
    }
 
