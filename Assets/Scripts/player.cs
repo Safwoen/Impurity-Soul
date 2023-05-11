@@ -39,12 +39,7 @@ public class player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-         if (garbageCollected >= 1)
-        {
-            endScreen.SetActive(true);
-        }
-
-
+        
 
         currentHealth-=damage;
 
@@ -64,6 +59,12 @@ public class player : MonoBehaviour
         {
             Die();
         }
+        if (garbageCollected >= 1)
+        {
+            endScreen.SetActive(true);
+        }
+
+
     }
 
     public void TakeDamageByEnemy(int damage)

@@ -11,7 +11,15 @@ public class End : MonoBehaviour
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
   }
 
- public void QuitGame()
+
+    public void Loadmenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+
+    public void QuitGame()
  {
     Application.Quit();
  }
