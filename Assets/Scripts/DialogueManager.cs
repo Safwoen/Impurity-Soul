@@ -9,11 +9,11 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public GameObject dialogueBox;
-
+    
     public Animator animator;
 
     private Queue<string> sentences;
-
+    public int currentSentence;
     void Start()
     {
 
@@ -24,12 +24,19 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            currentSentence++;
             DisplayNextSentence();
+            
+        }
+        if (currentSentence == 2)
+        {
+            dialogueBox.SetActive(false);
         }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        currentSentence = 0;
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
 
@@ -51,7 +58,10 @@ public class DialogueManager : MonoBehaviour
         {
             EndDialogue();
             return;
+
         }
+
+        
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));

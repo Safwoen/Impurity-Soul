@@ -15,6 +15,11 @@ public class Charactercontroller : MonoBehaviour
     bool inWater;
     public int collectablesCollected;
 
+    public AudioSource playerWater;
+    public AudioSource permaWaterPlayer;
+    public AudioClip waterIn;
+    public AudioClip waterOut;
+
     Rigidbody rigidBody;
     // Start is called before the first frame update
     void Start()
@@ -55,8 +60,10 @@ public class Charactercontroller : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "D rigidbody")
-
         {
+            //enterwatersound here
+            playerWater.PlayOneShot(waterIn);
+            permaWaterPlayer.Play();
             rigidBody.useGravity = false;
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
             inWater = true;
@@ -67,6 +74,8 @@ public class Charactercontroller : MonoBehaviour
     {
         if (other.gameObject.tag == "D rigidbody")
         {
+            //exitwatersoundhere
+            permaWaterPlayer.Pause();
             rigidBody.useGravity = true;
             inWater = false;
         }
