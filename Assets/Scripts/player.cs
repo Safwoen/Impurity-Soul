@@ -59,7 +59,7 @@ public class player : MonoBehaviour
         {
             Die();
         }
-        if (garbageCollected >= 1)
+        if (garbageCollected >= 6)
         {
             endScreen.SetActive(true);
         }
